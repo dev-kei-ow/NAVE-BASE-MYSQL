@@ -109,8 +109,8 @@ CONSTRAINT `FK_DetCitas_Citas` FOREIGN KEY (idCita) REFERENCES `citas` (idCita)
 
 -- INSERTS --------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO `usuarios` VALUES (1,'Nelson','Jamanca Lovera','nel@gmail','n123','Av.Sol 1524 - La Campiña Chorrillos','MBS','ADMIN');
-INSERT INTO `usuarios` VALUES (2,'Mary','Jane Watson','mary@gmail','c123','Av.Luna 1524 - Los Laureles La Molina','ANTESANA','CLIENTE');
+INSERT INTO `usuarios` VALUES (1,'Nelson','Jamanca Lovera','nel@gmail','$2a$10$w89N16hJtPVm93pv.tWBgu.EI30iXKmiBTy4US1hAn/P4pNUL8yjG','Av.Sol 1524 - La Campiña Chorrillos','MBS','ADMIN'); -- n123
+INSERT INTO `usuarios` VALUES (2,'Mary','Jane Watson','mary@gmail','$2a$10$Zvwr1IY42xb2rQkETrqEe.RH3fh/NOsQeyVefakYw/XgwsfvCJR6S','Av.Luna 1524 - Los Laureles La Molina','ANTESANA','CLIENTE'); -- m123
 -- --------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO `productos` VALUES (1,'Soldadora de pedestal',2000,'Estas soldadoras por puntos son fácilmente adaptables para diferentes trabajos; satisfacen las exigencias en las diferentes aplicaciones de la pequeña y mediana empresa. Fabricadas bajo normas técnicas de seguridad para el funcionamiento preciso, teniendo una construcción sólida y rígida.','SoldadoraPedestal.jpg',2,1);
