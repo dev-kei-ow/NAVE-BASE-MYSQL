@@ -3,38 +3,38 @@ USE bdsoldadoras;
 
 CREATE TABLE `trabajadores` (
 
-idTrabajador  int NOT NULL AUTO_INCREMENT,
-nombre        varchar(20) NOT NULL,
-apellido      varchar(20) NOT NULL,
-edad          int NOT NULL,
-correo        varchar(50) NOT NULL,
-cargo         varchar(50) NOT NULL,
-dni           int NOT NULL,
+idTrabajador  INT not null AUTO_INCREMENT,
+nombre        VARCHAR(20) not null,
+apellido      VARCHAR(20) not null,
+edad          INT not null,
+correo        VARCHAR(50) not null,
+cargo         VARCHAR(50) not null,
+dni           INT not null,
 PRIMARY KEY (idTrabajador)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `usuarios` (
 
-idUsuario  int NOT NULL AUTO_INCREMENT,
-nombre     varchar(20) NOT NULL,
-apellido   varchar(20) NOT NULL,
-correo     varchar(50) NOT NULL,
-pass       varchar(250) NOT NULL,
-direccion  varchar(50) NOT NULL,
-empresa    varchar(50) NOT NULL,
-tipo       varchar(50) NULL,
+idUsuario  INT not null AUTO_INCREMENT,
+nombre     VARCHAR(20) not null,
+apellido   VARCHAR(20) not null,
+correo     VARCHAR(50) not null,
+pass       VARCHAR(250) not null,
+direccion  VARCHAR(50) not null,
+empresa    VARCHAR(50) not null,
+tipo       VARCHAR(50) null,
 PRIMARY KEY (idUsuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `productos` (
 
-idProducto   int NOT NULL AUTO_INCREMENT,
-nombre       varchar(50) NOT NULL,
-precio       double NOT NULL,
-descripcion  varchar(500) NOT NULL,
-imagen       varchar(255) NOT NULL,
-cantidad     int NOT NULL,
-idUsuario    int NOT NULL,
+idProducto   INT not null AUTO_INCREMENT,
+nombre       VARCHAR(50) not null,
+precio       DOUBLE not null,
+descripcion  VARCHAR(500) not null,
+imagen       VARCHAR(255) not null,
+cantidad     INT not null,
+idUsuario    INT not null,
 PRIMARY KEY (idProducto),
 KEY `FK_Productos_Usuarios` (idUsuario),
 CONSTRAINT `FK_Productos_Usuarios` FOREIGN KEY (idUsuario) REFERENCES `usuarios` (idUsuario)
@@ -43,12 +43,12 @@ CONSTRAINT `FK_Productos_Usuarios` FOREIGN KEY (idUsuario) REFERENCES `usuarios`
 
 CREATE TABLE `ordenes` (
 
-idOrden        int NOT NULL AUTO_INCREMENT,
-numero         varchar(20) NOT NULL,
-fechaCreacion  date NOT NULL,
-fechaRecibida  date NOT NULL,
-total          double NOT NULL,
-idUsuario      int NOT NULL,
+idOrden        INT not null AUTO_INCREMENT,
+numero         VARCHAR(20) not null,
+fechaCreacion  DATE not null,
+fechaRecibida  DATE not null,
+total          DOUBLE not null,
+idUsuario      INT not null,
 PRIMARY KEY (idOrden),
 KEY `FK_Ordenes_Usuario` (idUsuario),
 CONSTRAINT `FK_Ordenes_Usuario` FOREIGN KEY (idUsuario) REFERENCES `usuarios` (idUsuario)
@@ -56,13 +56,13 @@ CONSTRAINT `FK_Ordenes_Usuario` FOREIGN KEY (idUsuario) REFERENCES `usuarios` (i
 
 CREATE TABLE `detalleordenes` (
 
-idDetalle    int NOT NULL AUTO_INCREMENT,
-nombre       varchar(50) NOT NULL,
-cantidad     int NOT NULL,
-precio       double NOT NULL,
-precioTotal  double NOT NULL,
-idProducto   int NOT NULL,
-idOrden      int NOT NULL,
+idDetalle    INT not null AUTO_INCREMENT,
+nombre       VARCHAR(50) not null,
+cantidad     INT not null,
+precio       DOUBLE not null,
+precioTotal  DOUBLE not null,
+idProducto   INT not null,
+idOrden      INT not null,
 PRIMARY KEY (idDetalle),
 KEY `FK_DetalleOrden_Productos` (idProducto),
 CONSTRAINT `FK_DetalleOrden_Productos` FOREIGN KEY (idProducto) REFERENCES `productos` (idProducto),
@@ -73,12 +73,12 @@ CONSTRAINT `FK_DetalleOrden_Ordenes` FOREIGN KEY (idOrden) REFERENCES `ordenes` 
 
 CREATE TABLE `pagos` (
 
-idPago     int NOT NULL AUTO_INCREMENT,
-tipoPago    varchar(50) NOT NULL,
-fecha       date NOT NULL,
-igv         double NOT NULL,
-montototal  double NOT NULL,
-idDetalle  int NOT NULL,
+idPago      INT not null AUTO_INCREMENT,
+tipoPago    VARCHAR(50) not null,
+fecha       DATE not null,
+igv         DOUBLE not null,
+montototal  DOUBLE not null,
+idDetalle   INT not null,
 PRIMARY KEY (idPago),
 KEY `FK_Pagos_Detalles` (idDetalle),
 CONSTRAINT `FK_Pagos_Detalles` FOREIGN KEY (idDetalle) REFERENCES `detalleordenes` (idDetalle)
@@ -87,11 +87,11 @@ CONSTRAINT `FK_Pagos_Detalles` FOREIGN KEY (idDetalle) REFERENCES `detalleordene
 
 CREATE TABLE `citas` (
 
-idCita int NOT NULL AUTO_INCREMENT,
-tipoCita varchar(50) NOT NULL,
-fechaRecibida date NOT NULL,
-descripcion varchar(500) NOT NULL,
-idUsuario int NOT NULL,
+idCita         INT not null AUTO_INCREMENT,
+tipoCita       VARCHAR(50) not null,
+fechaRecibida  DATE not null,
+descripcion    VARCHAR(500) not null,
+idUsuario      INT not null,
 PRIMARY KEY (idCita),
 KEY `FK_Citas_Usuario` (idUsuario),
 CONSTRAINT `FK_Citas_Usuario` FOREIGN KEY (idUsuario) REFERENCES `usuarios` (idUsuario)
@@ -99,10 +99,10 @@ CONSTRAINT `FK_Citas_Usuario` FOREIGN KEY (idUsuario) REFERENCES `usuarios` (idU
 
 CREATE TABLE `detallecitas` (
 
-fechaRecibida    date NOT NULL,
-fechaProgramada  date NOT NULL,
-descripcion      varchar(50) NOT NULL,
-idCita          int NOT NULL,
+fechaRecibida    DATE not null,
+fechaProgramada  DATE not null,
+descripcion      VARCHAR(50) not null,
+idCita           INT not null,
 KEY `FK_DetCitas_Citas` (idCita),
 CONSTRAINT `FK_DetCitas_Citas` FOREIGN KEY (idCita) REFERENCES `citas` (idCita)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
