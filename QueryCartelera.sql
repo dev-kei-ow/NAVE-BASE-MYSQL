@@ -9,7 +9,7 @@ USE `bdcartelera`;
 -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS `cines` ;
 
-CREATE TABLE `cines` (
+CREATE TABLE `cine` (
 
  idCine       int PRIMARY KEY AUTO_INCREMENT,
  razonSocial  varchar(100) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `cines` (
 -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS `peliculas` ;
 
-CREATE TABLE `peliculas` (
+CREATE TABLE `pelicula` (
 
  idPelicula     int PRIMARY KEY AUTO_INCREMENT,
  titulo         varchar(45) NOT NULL,
@@ -31,10 +31,10 @@ CREATE TABLE `peliculas` (
  trailerId      varchar(30) NOT NULL,
  formato        varchar(3) NULL,
  sinopsis       varchar(200) NULL,
- rutaPortada         varchar(255) NULL
+ rutaPortada    varchar(255) NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `generos` (
+CREATE TABLE `genero` (
 
  idGenero  int PRIMARY KEY AUTO_INCREMENT,
  nombre    varchar(45) NOT NULL
@@ -55,7 +55,7 @@ CREATE TABLE `generos_peliculas` (
 -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS `categorias` ;
 
-CREATE TABLE `categorias` (
+CREATE TABLE `categoria` (
 
  idCategoria  int PRIMARY KEY AUTO_INCREMENT,
  codigo        varchar(45) NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `categorias` (
 -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS `sedes` ;
 
-CREATE TABLE `sedes` (
+CREATE TABLE `sede` (
 
  idSede       int PRIMARY KEY AUTO_INCREMENT,
  nombre       varchar(45) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE `sedes` (
 -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS `salas` ;
 
-CREATE TABLE `salas` (
+CREATE TABLE `sala` (
 
  idSala     int PRIMARY KEY AUTO_INCREMENT,
  nombre     varchar(10) NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `salas` (
 -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS `funciones` ;
 
-CREATE TABLE `funciones` (
+CREATE TABLE `funcion` (
  
  idFuncion   int PRIMARY KEY AUTO_INCREMENT,
  horaInicio  varchar(20) NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE `funciones` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-INSERT INTO `categorias`
+INSERT INTO `categoria`
 (`id_categoria`,
 `codigo`,
 `descripcion`)
@@ -120,7 +120,7 @@ VALUES
 "PREMIUM");
 
 
-INSERT INTO `categorias`
+INSERT INTO `categoria`
 (`id_categoria`,
 `codigo`,
 `descripcion`)
@@ -129,7 +129,7 @@ VALUES
 "02",
 "REGULAR");
 
-INSERT INTO `cines`
+INSERT INTO `cine`
 (`id_cine`,
 `razonSocial`,
 `nombre`)
@@ -138,7 +138,7 @@ VALUES
 "UVK Multicines SA",
 "UVK");
 
-INSERT INTO `cines`
+INSERT INTO `cine`
 (`id_cine`,
 `razonSocial`,
 `nombre`)
@@ -147,7 +147,7 @@ VALUES
 "Cineplex SA",
 "CINEPLANET");
 
-INSERT INTO `cines`
+INSERT INTO `cine`
 (`id_cine`,
 `razonSocial`,
 `nombre`)
@@ -157,7 +157,7 @@ VALUES
 "UVK");
 
 /* :::PELICULA INSERTS::: ACCION */
-INSERT INTO `peliculas`
+INSERT INTO `pelicula`
 (`idPelicula`,
 `titulo`,
 `duracion`,
@@ -179,7 +179,7 @@ VALUES
 "Aquaman.jpg");
 
 /* :::PELICULA INSERTS::: ACCION */
-INSERT INTO `peliculas`
+INSERT INTO `pelicula`
 (`idPelicula`,
 `titulo`,
 `duracion`,
@@ -201,7 +201,7 @@ VALUES
 "Terremoto 8.0.jpg");
 
 /* :::PELICULA INSERTS::: ANIMACION */
-INSERT INTO `peliculas`
+INSERT INTO `pelicula`
 (`idPelicula`,
 `titulo`,
 `duracion`,
@@ -223,7 +223,7 @@ VALUES
 "Dragon Ball Super Broly.jpg");
 
 /* :::PELICULA INSERTS::: CIENCIA FICCION */
-INSERT INTO `peliculas`
+INSERT INTO `pelicula`
 (`idPelicula`,
 `titulo`,
 `duracion`,
@@ -245,7 +245,7 @@ VALUES
 "Transformes BumBleBee.jpg");
 
 /* :::PELICULA INSERTS::: ACCION, AVENTURA */
-INSERT INTO `peliculas`
+INSERT INTO `pelicula`
 (`idPelicula`,
 `titulo`,
 `duracion`,
@@ -267,7 +267,7 @@ VALUES
 "Spider Man No Way Home.jpg");
 
 /* :::PELICULA INSERTS::: CIENCIA FICCION */
-INSERT INTO `peliculas`
+INSERT INTO `pelicula`
 (`idPelicula`,
 `titulo`,
 `duracion`,
@@ -290,26 +290,26 @@ VALUES
 
 /* :::GENEROS INSERTS::: */
 
-INSERT INTO `generos`
+INSERT INTO `genero`
 (`nombre`)
 VALUES
 ('Accion');
-INSERT INTO `generos`
+INSERT INTO `genero`
 (`nombre`)
 VALUES
 ('Animacion');
-INSERT INTO `generos`
+INSERT INTO `genero`
 (`nombre`)
 VALUES
 ('Ciencia Ficcion');
-INSERT INTO `generos`
+INSERT INTO `genero`
 (`nombre`)
 VALUES
 ('Aventura');
 
 
 -- INSERT'S SEDES --
-INSERT INTO `sedes`
+INSERT INTO `sede`
 (`id_sede`,
 `nombre`,
 `direccion`,
@@ -322,7 +322,7 @@ VALUES
 1,
 1);
 
-INSERT INTO `sedes`
+INSERT INTO `sede`
 (`id_sede`,
 `nombre`,
 `direccion`,
@@ -335,7 +335,7 @@ VALUES
 2,
 1);
 
-INSERT INTO `sedes`
+INSERT INTO `sede`
 (`id_sede`,
 `nombre`,
 `direccion`,
@@ -348,7 +348,7 @@ VALUES
 1,
 2);
 
-INSERT INTO `sedes`
+INSERT INTO `sede`
 (`id_sede`,
 `nombre`,
 `direccion`,
@@ -361,7 +361,7 @@ VALUES
 2,
 2);
 
-INSERT INTO `sedes`
+INSERT INTO `sede`
 (`id_sede`,
 `nombre`,
 `direccion`,
@@ -375,7 +375,7 @@ VALUES
 3);
 
 
-INSERT INTO `salas`
+INSERT INTO `sala`
 (`id_sala`,
 `nombre`,
 `capacidad`,
@@ -386,7 +386,7 @@ VALUES
 80,
 1);
 
-INSERT INTO `salas`
+INSERT INTO `sala`
 (`id_sala`,
 `nombre`,
 `capacidad`,
@@ -397,7 +397,7 @@ VALUES
 70,
 1);
 
-INSERT INTO `salas`
+INSERT INTO `sala`
 (`id_sala`,
 `nombre`,
 `capacidad`,
@@ -408,7 +408,7 @@ VALUES
 70,
 2);
 
-INSERT INTO `salas`
+INSERT INTO `sala`
 (`id_sala`,
 `nombre`,
 `capacidad`,
@@ -420,7 +420,7 @@ VALUES
 3);
 
 
-INSERT INTO `salas`
+INSERT INTO `sala`
 (`id_sala`,
 `nombre`,
 `capacidad`,
@@ -431,7 +431,7 @@ VALUES
 65,
 4);
 
-INSERT INTO `salas`
+INSERT INTO `sala`
 (`id_sala`,
 `nombre`,
 `capacidad`,
@@ -442,7 +442,7 @@ VALUES
 65,
 5);
 
-INSERT INTO  `funciones`
+INSERT INTO  `funcion`
 (`id_funcion`,
 `horaInicio`,
 `horaFin`,
@@ -457,7 +457,7 @@ VALUES
 1,
 1);
 
-INSERT INTO `funciones`
+INSERT INTO `funcion`
 (`id_funcion`,
 `horaInicio`,
 `horaFin`,
@@ -472,7 +472,7 @@ VALUES
 1,
 2);
 
-INSERT INTO `funciones`
+INSERT INTO `funcion`
 (`id_funcion`,
 `horaInicio`,
 `horaFin`,
@@ -487,7 +487,7 @@ VALUES
 1,
 3);
 
-INSERT INTO `funciones`
+INSERT INTO `funcion`
 (`id_funcion`,
 `horaInicio`,
 `horaFin`,
