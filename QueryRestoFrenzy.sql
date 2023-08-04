@@ -1,6 +1,5 @@
 CREATE DATABASE dbrestrofrenzy;
 USE dbrestrofrenzy;
-
 CREATE TABLE `cliente` (
 
 idCliente  int NOT NULL AUTO_INCREMENT,
@@ -176,3 +175,9 @@ CONSTRAINT `FK_Reservacion_Mesa` FOREIGN KEY (idReserva) REFERENCES `reservacion
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+
+INSERT INTO cliente (nombres, apellidos, correo, telefono)
+VALUES
+('Juan', 'Pérez', 'juan.perez@email.com', '123456789'),
+('María', 'García', 'maria.garcia@email.com', '987654321'),
+;
