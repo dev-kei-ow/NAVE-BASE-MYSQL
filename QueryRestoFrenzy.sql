@@ -1,5 +1,8 @@
 CREATE DATABASE dbrestrofrenzy;
 USE dbrestrofrenzy;
+/*ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+FLUSH PRIVILEGES;
+*/
 CREATE TABLE `cliente` (
 
 idCliente  int NOT NULL AUTO_INCREMENT,
@@ -64,6 +67,8 @@ nacimiento      varchar(50) NOT NULL,
 direccion       varchar(50) NOT NULL,
 telefono        varchar(50) NOT NULL,
 correo          varchar(50) NOT NULL,
+usuario         varchar(50) NOT NULL,
+contraseña		varchar(50) NOT NULL,
 idSucursal      int NOT NULL,
 idCargo         int NOT NULL,
 idTipoEmpleado  int NOT NULL,
@@ -111,7 +116,7 @@ idPago      int NOT NULL AUTO_INCREMENT,
 formaPago   varchar(50) NOT NULL,
 PRIMARY KEY (idPago)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+select * from cargo;
 CREATE TABLE `factura` (
 
 idFactura   int NOT NULL AUTO_INCREMENT,
@@ -174,8 +179,6 @@ CONSTRAINT `FK_Orden_Mesa` FOREIGN KEY (idMesa) REFERENCES `mesa` (idMesa),
 CONSTRAINT `FK_Orden_Reserva` FOREIGN KEY (idReserva) REFERENCES `reservacion` (idReserva),
 CONSTRAINT `FK_Orden_Producto` FOREIGN KEY (idProducto) REFERENCES `producto` (idProducto)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
 
 
 INSERT INTO cliente (nombres, apellidos, correo, telefono)
@@ -249,23 +252,22 @@ VALUES
 ('Recepcionista'),
 ('Sommelier');
 
-
-INSERT INTO empleado (idAdmin, nombres, apellidos, salario, nacimiento, direccion, telefono, correo, idSucursal, idCargo, idTipoEmpleado)
-VALUES (1, 'Juan', 'Pérez', '2000', '1990-01-15', 'Calle 123', '123456789', 'juan@example.com', 1, 1, 1),
- (1, 'María', 'Gómez', '1800', '1988-05-20', 'Av. Independencia 456', '987654321', 'maria@example.com', 1, 3, 1),
- (1, 'Carlos', 'Rodríguez', '2200', '1992-11-02', 'Jr. Lima 789', '456789123', 'carlos@example.com', 1, 2, 2),
- (1, 'Ana', 'López', '1900', '1995-03-10', 'Av. Amazonas 321', '789456123', 'ana@example.com', 1, 6, 2),
- (1, 'Luis', 'Ramírez', '2100', '1985-08-25', 'Av. Brasil 567', '159357852', 'luis@example.com', 1, 3, 1),
- (1, 'Laura', 'Torres', '1950', '1991-07-12', 'Calle 456', '753951852', 'laura@example.com', 1, 5, 2),
- (1, 'José', 'Sánchez', '1800', '1993-06-30', 'Jr. Arequipa 852', '456789123', 'jose@example.com', 1, 3, 1),
- (1, 'Patricia', 'Castro', '2000', '1994-04-17', 'Av. Brasil 123', '753951852', 'patricia@example.com', 1, 7, 2),
- (1, 'Andrés', 'Pérez', '2100', '1992-09-03', 'Av. Larco 456', '456789123', 'andres@example.com', 1, 3, 1),
- (1, 'Paola', 'Gutiérrez', '1900', '1990-12-28', 'Jr. Lima 852', '753951852', 'paola@example.com', 1, 8, 2),
- (1, 'Daniel', 'Fernández', '1800', '1987-11-05', 'Av. Brasil 789', '456789123', 'daniel@example.com', 1, 3, 1),
- (1, 'Carolina', 'Vargas', '1950', '1991-07-15', 'Calle 789', '753951852', 'carolina@example.com', 1, 3, 2),
- (1, 'Miguel', 'Castro', '2200', '1988-04-30', 'Jr. Arequipa 852', '456789123', 'miguel@example.com', 1, 2, 1),
- (1, 'Gabriela', 'Díaz', '2000', '1993-06-17', 'Av. Brasil 123', '753951852', 'gabriela@example.com', 1, 4, 2),
- (1, 'Marco', 'Paredes', '2100', '1992-09-22', 'Av. Larco 456', '456789123', 'marco@example.com', 1, 3, 1);
+INSERT INTO empleado (idAdmin, nombres, apellidos, salario, nacimiento, direccion, telefono, correo, usuario, contraseña, idSucursal, idCargo, idTipoEmpleado)
+VALUES
+  (1, 'Carlos', 'Rodríguez', '2200', '1992-11-02', 'Jr. Lima 789', '456789123', 'carlos@example.com', 'carlos123', 'contraseña3', 1, 2, 2),
+  (1, 'Ana', 'López', '1900', '1995-03-10', 'Av. Amazonas 321', '789456123', 'ana@example.com', 'ana123', 'contraseña4', 1, 6, 2),
+  (1, 'Luis', 'Ramírez', '2100', '1985-08-25', 'Av. Brasil 567', '159357852', 'luis@example.com', 'luis123', 'contraseña5', 1, 3, 1),
+  (1, 'Laura', 'Torres', '1950', '1991-07-12', 'Calle 456', '753951852', 'laura@example.com', 'laura123', 'contraseña6', 1, 5, 2),
+  (1, 'José', 'Sánchez', '1800', '1993-06-30', 'Jr. Arequipa 852', '456789123', 'jose@example.com', 'jose123', 'contraseña7', 1, 3, 1),
+  (1, 'Patricia', 'Castro', '2000', '1994-04-17', 'Av. Brasil 123', '753951852', 'patricia@example.com', 'patricia123', 'contraseña8', 1, 7, 2),
+  (1, 'Andrés', 'Pérez', '2100', '1992-09-03', 'Av. Larco 456', '456789123', 'andres@example.com', 'andres123', 'contraseña9', 1, 3, 1),
+  (1, 'Paola', 'Gutiérrez', '1900', '1990-12-28', 'Jr. Lima 852', '753951852', 'paola@example.com', 'paola123', 'contraseña10', 1, 8, 2),
+  (1, 'Daniel', 'Fernández', '1800', '1987-11-05', 'Av. Brasil 789', '456789123', 'daniel@example.com', 'daniel123', 'contraseña11', 1, 3, 1),
+  (1, 'Carolina', 'Vargas', '1950', '1991-07-15', 'Calle 789', '753951852', 'carolina@example.com', 'carolina123', 'contraseña12', 1, 3, 2),
+  (1, 'Miguel', 'Castro', '2200', '1988-04-30', 'Jr. Arequipa 852', '456789123', 'miguel@example.com', 'miguel123', 'contraseña13', 1, 2, 1),
+  (1, 'Gabriela', 'Díaz', '2000', '1993-06-17', 'Av. Brasil 123', '753951852', 'gabriela@example.com', 'gabriela123', 'contraseña14', 1, 4, 2),
+  (1, 'Marco', 'Paredes', '2100', '1992-09-22', 'Av. Larco 456', '456789123', 'marco@example.com', 'marco123', 'contraseña15', 1, 3, 1),
+  (2, 'Nelson', 'Jamanca', '2100', '1992-09-22', 'Av. Larco 456', '456789123', 'nelson@example.com', 'nelson123', 'contraseña15', 1, 3, 1);
 
 INSERT INTO registrojornada (horaEntrada, horaSalida, idEmpleado)
 VALUES
@@ -281,9 +283,7 @@ VALUES
 ('2023-08-01 09:00:00', '2023-08-01 17:00:00', 10),
 ('2023-08-01 08:00:00', '2023-08-01 16:00:00', 11),
 ('2023-08-01 09:30:00', '2023-08-01 17:30:00', 12),
-('2023-08-01 10:00:00', '2023-08-01 18:00:00', 13),
-('2023-08-01 08:30:00', '2023-08-01 16:30:00', 14),
-('2023-08-01 09:00:00', '2023-08-01 17:00:00', 15);
+('2023-08-01 10:00:00', '2023-08-01 18:00:00', 13);
 
 
 INSERT INTO reservacion (fechaHora, idCliente)
@@ -370,8 +370,6 @@ VALUES
 ('2023-08-19', 500, 18, 590, 0, 0, 19, 5),
 ('2023-08-20', 600, 18, 708, 0, 0, 20, 6);
 
-
-
 INSERT INTO banco (nombre)
 VALUES
 ('Banco de Crédito del Perú'),
@@ -405,7 +403,6 @@ VALUES
 ('PEN', 555555, 8, 3),
 -- Registros para el cliente 5
 ('USD', 666666, 9, 4);
-
 
 INSERT INTO orden (idOrden, idMesa, idReserva, idProducto)
 VALUES
