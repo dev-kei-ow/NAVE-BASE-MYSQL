@@ -1,5 +1,5 @@
-CREATE DATABASE dbrestrofrenzy;
-USE dbrestrofrenzy;
+CREATE DATABASE dbrestofrenzy;
+USE dbrestofrenzy;
 /*ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 FLUSH PRIVILEGES;
 */
